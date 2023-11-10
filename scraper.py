@@ -1,7 +1,7 @@
 import requests
 import re
 from hashtable import ScraperHashTable
-
+from hashtablentry import ScraperHashTableEntry
 
 
 def getLinks(url):
@@ -32,9 +32,10 @@ def getLinks(url):
 
 if __name__ == "__main__":
     ht = ScraperHashTable(500000)
-    rootLinks = getLinks('wiki/Wiki')
-    for i in range(len(rootLinks)):
-        print(rootLinks[i])
-        subLinks = getLinks(rootLinks[i])
-        for x in range(len(subLinks)):
-            print(f"            {subLinks[x]}",ht.addHt(subLinks[x]))
+    print(ht[1])
+    #rootLinks = getLinks('wiki/Wiki')
+    #for i in range(len(rootLinks)):
+    #    print(rootLinks[i])
+    #    subLinks = getLinks(rootLinks[i])
+    #    for x in range(len(subLinks)):
+    #        print(f"            {subLinks[x]}",ht.addHt(subLinks[x]))
