@@ -31,9 +31,19 @@ def getLinks(url):
 
 
 if __name__ == "__main__":
-    ht = ScraperHashTable(500000)
-    print(ht[1])
-    #rootLinks = getLinks('wiki/Wiki')
+    
+    bufferFactor = 0.25
+    rootLinks = getLinks('wiki/Wiki')
+
+    tableSize = int(len(rootLinks) + (len(rootLinks) * bufferFactor))
+    print(tableSize)
+    linkTable = ScraperHashTable(tableSize)
+    
+    for i in range(len(rootLinks)):
+        linkTable.addLink(rootLinks[i])
+
+    linkTable.displayTable()
+
     #for i in range(len(rootLinks)):
     #    print(rootLinks[i])
     #    subLinks = getLinks(rootLinks[i])

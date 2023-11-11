@@ -15,7 +15,6 @@ class ScraperHashTable:
         hashedLink = self.hashLink(link) # hash link
         indexValue = self.getIndex(hashedLink) # check if hashed positon is empty
         
-        invalid = False
         entry = SHTE(link,hashedLink)
         if indexValue == 0:
             self.setIndex(hashedLink,entry)
@@ -23,26 +22,15 @@ class ScraperHashTable:
         else:
             node = self.getIndex(hashedLink)
             while node.getNext() != None:
-                if link != node.getData():
-                    node = node.getNext()
-                else:
-                    print("-------------------------->duplicate")
-                    invalid = True
-                    break
-            if invalid == False:
-                node.setNext(entry)
+                node = node.getNext()
+            node.setNext(entry)
 
     def displayTable(self):
         for i in range(self.size):
             if (isinstance(self.getIndex(i),SHTE)):
-                node = self.getIndex(i)
-                print(node.getData())
-                while node.getNext() != None:
-                    print(node.getData())
-                    node = node.getNext()
-
+                print("entry")
             else:
-                print("Empty")
+                print("ind")
 
     def getIndex(self,index):
         return self.table[index]
